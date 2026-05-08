@@ -24,6 +24,9 @@ dependencies = [
     "yt-dlp>=2024.12.13",
     "imageio-ffmpeg>=0.5.1",
     "flet>=0.24.1,<0.26",
+    "Pillow>=10.0",
+    "ImageHash>=4.3",
+    "reportlab>=4.0",
 ]
 
 [project.optional-dependencies]

@@ -17,7 +17,7 @@ datas = []
 binaries = []
 hiddenimports = []
 
-for pkg in ("flet", "yt_dlp", "imageio_ffmpeg"):
+for pkg in ("flet", "yt_dlp", "imageio_ffmpeg", "reportlab"):
     d, b, h = collect_all(pkg)
     datas += d
     binaries += b
