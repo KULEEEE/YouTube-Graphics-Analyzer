@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytga"
+version = "0.1.0"
+description = "YouTube gameplay frame extractor + Claude-powered graphics technique analyzer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ytga contributors" }]
+keywords = ["youtube", "graphics", "rendering", "claude", "frame-extraction", "game"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Environment :: Win32 (MS Windows)",
+]
+dependencies = [
+    "yt-dlp>=2024.12.13",
+    "imageio-ffmpeg>=0.5.1",
+    "flet>=0.24.1,<0.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pyinstaller>=6.10",
+    "ruff>=0.7",
+]
+
+[project.scripts]
+ytga = "ytga.__main__:main"
+ytga-cli = "ytga.cli:main"
+
+[project.gui-scripts]
+ytga-gui = "ytga.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ytga = ["assets/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

@@ -1,0 +1,70 @@
+name: Build Windows Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version label (e.g., 0.1.0-rc1) for manual builds'
+        required: false
+        default: 'manual'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Build single-file .exe with PyInstaller
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --onefile --windowed `
+            --name ytga `
+            --collect-all flet `
+            --collect-all yt_dlp `
+            --collect-all imageio_ffmpeg `
+            src/ytga/__main__.py
+          Get-ChildItem dist
+
+      - name: Smoke-test the binary
+        shell: pwsh
+        run: |
+          # The GUI exe will not exit on its own; just verify it exists and is non-trivial.
+          $exe = "dist/ytga.exe"
+          if (-not (Test-Path $exe)) { throw "ytga.exe missing" }
+          $size = (Get-Item $exe).Length
+          Write-Host "ytga.exe size: $($size / 1MB) MB"
+          if ($size -lt 10MB) { throw "exe seems too small ($size bytes)" }
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ytga-windows-x64
+          path: dist/ytga.exe
+          if-no-files-found: error
+
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/ytga.exe
+          generate_release_notes: true
+          draft: false
+          prerelease: false
