@@ -113,4 +113,15 @@ pyinstaller build.spec
 
 ## 라이선스
 
-MIT. 의존성 라이선스: yt-dlp (Unlicense), FFmpeg (LGPL/GPL — imageio-ffmpeg는 LGPL 빌드 사용), Flet (Apache-2.0).
+MIT. 의존성 라이선스: yt-dlp (Unlicense), FFmpeg (LGPL/GPL — imageio-ffmpeg는 LGPL 빌드 사용), Flet (Apache-2.0), Pillow (HPND), ImageHash (BSD-2), reportlab (BSD).
+
+## Disclaimer / 사용 시 주의
+
+이 도구는 **개인적인 학습·분석·연구 목적**으로 만들어졌습니다. 사용자는 다음을 본인 책임으로 준수해야 합니다.
+
+- **YouTube 이용약관** — YouTube ToS는 비공식 다운로드를 일반적으로 금지합니다. 계정/IP 차단 등 계약상 제재 가능성이 있습니다.
+- **저작권** — 다운로드한 영상은 사적 이용 범위 안에서만 사용하세요. 한국 저작권법 §30(사적 복제)·§35-3(공정 이용)이 분석/학습용 개인 사용은 일반적으로 허용하지만, **재배포·상업적 이용·가공 후 게시는 불법**입니다.
+- **DRM** — 본 도구는 DRM 우회를 시도하지 않습니다. DRM이 적용된 영상(멤버십 전용 등)은 다운로드하지 마세요.
+- **본인 콘텐츠 / 권리 보유 콘텐츠** — 가능하면 본인 영상이나 명시적 라이선스(CC 등)가 부여된 영상으로 분석하세요.
+
+이 소프트웨어는 MIT 라이선스로 배포되며, 사용으로 인한 어떤 결과(법적 책임 포함)에 대해서도 작성자/기여자는 책임지지 않습니다 (LICENSE 파일 참조).

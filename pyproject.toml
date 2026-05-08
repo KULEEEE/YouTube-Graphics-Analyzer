@@ -9,7 +9,7 @@ description = "YouTube gameplay frame extractor + Claude-powered graphics techni
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "ytga contributors" }]
+authors = [{ name = "KULEEEE" }]
 keywords = ["youtube", "graphics", "rendering", "claude", "frame-extraction", "game"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
