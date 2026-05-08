@@ -22,7 +22,8 @@ URL  →  프레임 추출 (yt-dlp + ffmpeg)  →  Claude 분석  →  Markdown 
 
 ## 사용법
 
-<!-- TODO: main UI screenshot -->
+<img width="1200" height="632" alt="temp_1778229755801" src="https://github.com/user-attachments/assets/135704f1-724e-429c-a8c5-16ede0f7252a" />
+
 
 ### 1. 프레임 추출
 
