@@ -157,6 +157,8 @@ ytga.exe --cli "https://www.youtube.com/watch?v=VIDEO_ID" ^
 
 ## 소스에서 빌드
 
+### PowerShell (권장)
+
 ```powershell
 git clone https://github.com/KULEEEE/YouTube-Graphics-Analyzer
 cd YouTube-Graphics-Analyzer
@@ -173,8 +175,33 @@ pyinstaller build.spec
 # 결과: dist\ytga.exe
 ```
 
-GitHub Actions 자동 빌드는 태그 푸시로 트리거:
+### Windows cmd
+
+cmd에서는 두 군데가 다릅니다 — `cd /d` 로 드라이브 이동, `.bat` 로 venv 활성화.
+
+```cmd
+git clone https://github.com/KULEEEE/YouTube-Graphics-Analyzer
+cd /d YouTube-Graphics-Analyzer
+
+python -m venv .venv
+.venv\Scripts\activate.bat
+pip install -e ".[dev]"
+
+REM 개발 모드 실행
+python -m ytga
+
+REM 단일 .exe 빌드
+pyinstaller build.spec
+REM 결과: dist\ytga.exe
 ```
+
+> 활성화 잘 됐으면 프롬프트 앞에 `(.venv)` 가 붙습니다.
+
+### GitHub Actions 자동 빌드
+
+태그 푸시로 트리거 (`windows-latest` 러너에서 PyInstaller 실행, Release에 `ytga.exe` 자동 첨부):
+
+```cmd
 git tag v0.1.1
 git push --tags
 ```
